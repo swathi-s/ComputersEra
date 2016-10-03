@@ -3,9 +3,9 @@ package com.example.swathi.computersera.model;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by user on 9/30/2016.
+ * Created by user on 10/3/2016.
  */
-public class Article {
+public class SingleArticle {
 
     @SerializedName("id")
     private Integer id;
@@ -22,13 +22,21 @@ public class Article {
     @SerializedName("PostedBy")
     private String postedBy;
 
-    public Article(Integer id, String title, String description, String postedDate, String postedBy)
+    @SerializedName("article_pic")
+    private String articalPic;
+
+    @SerializedName("about_author")
+    private String aboutAuthor;
+
+    public SingleArticle(Integer id, String title, String description, String postedDate, String postedBy, String image, String aboutAuthor)
     {
         this.id = id;
         this.title = title;
         this.description = description;
         this.postedDate = postedDate;
         this.postedBy = postedBy;
+        this.articalPic = image;
+        this.aboutAuthor = aboutAuthor;
     }
 
     public Integer getId() {
@@ -69,5 +77,21 @@ public class Article {
 
     public void setPostedBy(String postedBy) {
         this.postedBy = postedBy;
+    }
+
+    public String getArticalPic() {
+        return articalPic;
+    }
+
+    public void setArticalPic(String articalPic) {
+        this.articalPic = articalPic;
+    }
+
+    public String getAboutAuthor() {
+        return aboutAuthor;
+    }
+
+    public void setAboutAuthor(String aboutAuthor) {
+        this.aboutAuthor = aboutAuthor;
     }
 }
