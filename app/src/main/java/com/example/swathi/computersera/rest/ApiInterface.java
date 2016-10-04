@@ -19,7 +19,7 @@ public interface ApiInterface {
     Call<List<Header>> getHeader();
 
     @GET("getarticles.php")
-    Call<List<Article>> getArticle(@Query("id") int id, @Query("page") int page );
+    Call<List<Article>> getArticle(@Query("id") int id, @Query("pageno") int page );
 
     @GET("getarticledetails.php")
     Call<List<SingleArticle>> getArticledetails(@Query("id") int id);

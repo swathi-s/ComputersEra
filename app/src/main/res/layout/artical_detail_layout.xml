@@ -1,116 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <RelativeLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Artical Details"
-        android:textColor="@color/spinnerBG"
-        android:fontFamily="sans-serif-medium"
-        android:id="@+id/textView"
-        android:layout_gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Artical Details"
+            android:textColor="@color/spinnerBG"
+            android:fontFamily="sans-serif-medium"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/detailImage"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginTop="10dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Name : "
-        android:id="@+id/textView2"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/detailImage"
+            android:src="@drawable/news"
+            android:layout_below="@+id/textView"
+            android:layout_toRightOf="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_marginTop="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Name : "
+            android:id="@+id/textView2"
+            android:textColor="@color/spinnerBG"
+            android:layout_alignTop="@+id/detailTitleTxt"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
-        android:layout_alignTop="@+id/detailTitleTxt"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Published By :"
+            android:textColor="@color/spinnerBG"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/detailTitleTxt"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="34dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Published By :"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Published On : "
+            android:textColor="@color/spinnerBG"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="40dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Published On : "
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Description: "
+            android:textColor="@color/spinnerBG"
+            android:id="@+id/textView5"
+            android:layout_below="@+id/textView4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="34dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Description: "
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="detailTitleTxt"
+            android:id="@+id/detailTitleTxt"
+            android:layout_below="@+id/detailImage"
+            android:layout_toRightOf="@+id/textView4"
+            android:layout_marginTop="31dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="detailTitleTxt"
-        android:id="@+id/detailTitleTxt"
-        android:layout_below="@+id/detailImage"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_marginTop="31dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/detailPublishedBytxt"
+            android:layout_above="@+id/textView4"
+            android:layout_alignLeft="@+id/detailTitleTxt"
+            android:layout_alignStart="@+id/detailTitleTxt"
+            android:layout_alignRight="@+id/detailTitleTxt"
+            android:layout_alignEnd="@+id/detailTitleTxt" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/detailPublishedBytxt"
-        android:layout_above="@+id/textView4"
-        android:layout_alignLeft="@+id/detailTitleTxt"
-        android:layout_alignStart="@+id/detailTitleTxt"
-        android:layout_alignRight="@+id/detailTitleTxt"
-        android:layout_alignEnd="@+id/detailTitleTxt" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/detailsPublishedDate"
+            android:layout_above="@+id/textView5"
+            android:layout_toRightOf="@+id/textView4"
+            android:layout_alignRight="@+id/detailPublishedBytxt"
+            android:layout_alignEnd="@+id/detailPublishedBytxt" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/detailsPublishedDate"
-        android:layout_above="@+id/textView5"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_alignRight="@+id/detailPublishedBytxt"
-        android:layout_alignEnd="@+id/detailPublishedBytxt" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/detailDescription"
+            android:layout_alignTop="@+id/textView5"
+            android:layout_toRightOf="@+id/textView4"
+            android:layout_alignRight="@+id/detailsPublishedDate"
+            android:layout_alignEnd="@+id/detailsPublishedDate" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/detailDescription"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_alignRight="@+id/detailsPublishedDate"
-        android:layout_alignEnd="@+id/detailsPublishedDate" />
+        <Button
+            android:text="Home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/homeBtn"
+            android:onClick="loadHome"
+            android:layout_alignBaseline="@+id/textView"
+            android:layout_alignBottom="@+id/textView"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -1,6 +1,7 @@
 package com.example.swathi.computersera.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
@@ -50,24 +51,48 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticalV
     public void onBindViewHolder(ArticleAdapter.ArticalViewHolder holder, int position) {
         final int pos = position;
         holder.titleTxt.setText(articles.get(position).getTitle());
-        Log.d("title",holder.titleTxt.getText().toString());
-        holder.postedByTxt.setText(articles.get(position).getPostedBy());
-        Log.d("by", holder.postedByTxt.getText().toString());
-        holder.postedDateTxt.setText(articles.get(position).getPostedDate());
-        Log.d("on",holder.postedDateTxt.getText().toString());
-        holder.description.setText(Html.fromHtml(articles.get(position).getDescription()));
-        Log.d("description",holder.description.getText().toString());
-        /*
+        //Log.d("title",holder.titleTxt.getText().toString());
+        holder.postedByTxt.setText("Posted By : "+articles.get(position).getPostedBy());
+        //Log.d("by", holder.postedByTxt.getText().toString());
+        holder.postedDateTxt.setText("Posted On : "+articles.get(position).getPostedDate());
+        //Log.d("on",holder.postedDateTxt.getText().toString());
+        holder.description.setText(Html.fromHtml(articles.get(position).getDescription(),new ImageGetter(), null));
+        //Log.d("description",holder.description.getText().toString());
+        //Log.d("here","in article adapter");
+        holder.readMoreTxt.setTag(articles.get(position).getId());
+/*
         holder.readMoreTxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("clicked","clicked");
+                //Log.d("clicked","clicked");
                 int id = articles.get(pos).getId();
-                MainActivity.getArticalDetails(context,id);
+                MainActivity.getArticalDetails(context,id,v);
+
             }
-        });
-        */
+        });*/
+
     }
+
+    private class ImageGetter implements Html.ImageGetter {
+
+        public Drawable getDrawable(String source) {
+            int id;
+
+            if (source.equals("stack.jpg")) {
+                id = R.drawable.news;
+            }
+            else if (source.equals("overflow.jpg")) {
+                id = R.drawable.news;
+            }
+            else {
+                return null;
+            }
+
+            Drawable d = context.getResources().getDrawable(id);
+            d.setBounds(0,0,d.getIntrinsicWidth(),d.getIntrinsicHeight());
+            return d;
+        }
+    };
 
     @Override
     public int getItemCount() {

@@ -1,16 +1,19 @@
 package com.example.swathi.computersera.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -24,6 +27,7 @@ import com.example.swathi.computersera.model.SingleArticle;
 import com.example.swathi.computersera.rest.ApiClient;
 import com.example.swathi.computersera.rest.ApiInterface;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,6 +36,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    public Integer ArticleId  = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
                 List<Article> articles = response.body();
-                Log.d("response is",response.body().toString());
+                //Log.d("response is",response.body().toString());
                 recyclerView.setAdapter(new ArticleAdapter(articles,R.layout.article_item_layout,getApplicationContext()));
 
             }
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                 List<Header> headers = response.body();
                 String[] header_array = new String[headers.size()];
-                Log.d("response is",response.body().toString());
+                //Log.d("response is",response.body().toString());
                 Spinner spinner = (Spinner) findViewById(R.id.headerList);
                 for(int i=0; i<headers.size();i++)
                 {
@@ -91,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static void getArticalDetails(final Context context, int id) {
-        LayoutInflater inflator = LayoutInflater.from(context);
-        final View view = inflator.inflate(R.layout.artical_detail_layout,null);
+    public static void getArticalDetails(final Context context, int id, View v) {
+        LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View view = inflator.inflate(R.layout.artical_detail_layout,null,false);
 
-        Log.d("clicked","within function");
+        //Log.d("clicked","within function");
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<List<SingleArticle>> articleDetail = apiInterface.getArticledetails(id);
         articleDetail.enqueue(new Callback<List<SingleArticle>>() {
@@ -111,20 +116,86 @@ public class MainActivity extends AppCompatActivity {
                 String author = article.get(0).getAboutAuthor();
 
                 TextView titleTxt = (TextView) view.findViewById(R.id.detailTitleTxt);
-                Log.d("clicked","title is "+title);
+                //Log.d("clicked","title is "+title);
+
                 titleTxt.setText(title);
             }
 
             @Override
             public void onFailure(Call<List<SingleArticle>> call, Throwable t) {
-
+                //Log.e("error","failed to request");
             }
         });
+
     }
 
-    public void ReadMore(View view) {
 
-        Log.d("clicked","read more");
+    public void ReadMore(View view) {
+        //Log.d("tag",view.getTag().toString());
+        ArticleId = Integer.valueOf(view.getTag().toString());
+        /*
+        //Log.d("clicked","came inside function");
+        try {
+            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+            startActivity(intent);
+            //Log.d("clicked","in intent");
+
+        }catch (IllegalStateException e){
+            //Log.d("exception"," "+e);
+        }*/
+
+        setContentView(R.layout.artical_detail_layout);
+
+        int id = ArticleId;
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<List<SingleArticle>> articleDetail = apiInterface.getArticledetails(id);
+        articleDetail.enqueue(new Callback<List<SingleArticle>>() {
+            @Override
+            public void onResponse(Call<List<SingleArticle>> call, Response<List<SingleArticle>> response) {
+                //MainActivity.
+                List<SingleArticle> article = response.body();
+                String title = article.get(0).getTitle();
+                String postedBy = article.get(0).getPostedBy();
+                String postedOn = article.get(0).getPostedDate();
+                String description = article.get(0).getDescription();
+                String image = article.get(0).getArticalPic();
+                String author = article.get(0).getAboutAuthor();
+                //setContentView(R.layout.artical_detail_layout);
+                TextView titleTxt = (TextView) findViewById(R.id.detailTitleTxt);
+                //Log.d("clicked","title is "+title);
+                // Intent intent = new Intent(getApplicationContext(),DetailActivity.class);
+                //startActivity(intent);
+
+                titleTxt.setText(title);
+
+                TextView postedByTxt = (TextView) findViewById(R.id.detailPublishedBytxt);
+                postedByTxt.setText(postedBy);
+
+                TextView postedOnTxt = (TextView) findViewById(R.id.detailsPublishedDate);
+                postedOnTxt.setText(postedOn);
+
+                TextView descriptionTxt = (TextView) findViewById(R.id.detailDescription);
+                descriptionTxt.setText(Html.fromHtml(description));
+
+                ImageView articleImg = (ImageView) findViewById(R.id.detailImage);
+                //articleImg.setImageURI(Uri.parse(article.get(0).getArticalPic()));
+            }
+
+            @Override
+            public void onFailure(Call<List<SingleArticle>> call, Throwable t) {
+               // Log.e("error","failed to request");
+            }
+        });
+
+        //Log.d("clicked","read more");
+
+
+    }
+
+    public void loadHome(View view) {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
 
     }
 }
