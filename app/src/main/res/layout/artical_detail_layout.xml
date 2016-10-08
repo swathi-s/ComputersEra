@@ -19,15 +19,6 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/detailImage"
-            android:src="@drawable/news"
-            android:layout_below="@+id/textView"
-            android:layout_toRightOf="@+id/textView3"
-            android:layout_toEndOf="@+id/textView3"
-            android:layout_marginTop="10dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -131,6 +122,15 @@
             android:layout_alignBottom="@+id/textView"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true" />
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:id="@+id/detailImage"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/textView"
+            android:layout_toRightOf="@+id/textView3"
+            android:layout_toEndOf="@+id/textView3" />
 
     </RelativeLayout>
 </ScrollView>

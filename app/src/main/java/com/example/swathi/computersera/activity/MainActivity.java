@@ -2,6 +2,7 @@ package com.example.swathi.computersera.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,9 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import com.squareup.picasso.Picasso;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -131,6 +135,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void ReadMore(View view) {
+
+        //ImageLoader imageLoader=new  ImageLoader(activity.getApplicationContext());
+
         //Log.d("tag",view.getTag().toString());
         ArticleId = Integer.valueOf(view.getTag().toString());
         /*
@@ -178,7 +185,9 @@ public class MainActivity extends AppCompatActivity {
                 TextView descriptionTxt = (TextView) findViewById(R.id.detailDescription);
                 descriptionTxt.setText(Html.fromHtml(description));
 
+                Log.d("article image",image);
                 ImageView articleImg = (ImageView) findViewById(R.id.detailImage);
+                Picasso.with(getApplicationContext()).load(Uri.parse(article.get(0).getArticalPic())).into(articleImg);
                 //articleImg.setImageURI(Uri.parse(article.get(0).getArticalPic()));
             }
 

@@ -70,8 +70,9 @@ public class DetailActivity extends AppCompatActivity{
                 TextView descriptionTxt = (TextView) findViewById(R.id.detailDescription);
                 descriptionTxt.setText(Html.fromHtml(description));
 
+                Log.d("article image",article.get(0).getArticalPic());
                 ImageView articleImg = (ImageView) findViewById(R.id.detailImage);
-                //articleImg.setImageURI(Uri.parse(article.get(0).getArticalPic()));
+                articleImg.setImageURI(Uri.parse(article.get(0).getArticalPic()));
             }
 
             @Override
